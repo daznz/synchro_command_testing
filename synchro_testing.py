@@ -20,7 +20,9 @@ from bosdyn.util import seconds_to_duration
 from bosdyn.client.estop import EstopClient, EstopEndpoint, EstopKeepAlive
 from bosdyn.client.frame_helpers import ODOM_FRAME_NAME, VISION_FRAME_NAME, BODY_FRAME_NAME, get_odom_tform_body, get_vision_tform_body
 
-logger = logging.getLogger(__name__)
+bosdyn.client.util.setup_logging(verbose=False)
+
+logger = logging.getLogger(" ")
 logging.basicConfig(level=logging.DEBUG)
 
 parser = argparse.ArgumentParser()
