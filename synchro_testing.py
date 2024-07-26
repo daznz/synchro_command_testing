@@ -54,15 +54,15 @@ with bosdyn.client.lease.LeaseKeepAlive(lease_client, must_acquire=True, return_
     # Now, we are ready to power on the robot. This call will block until the power
     # is on. Commands would fail if this did not happen. We can also check that the robot is
     # powered at any point.
-    robot.logger.info('Powering on robot... This may take several seconds.')
+    logger.info('Powering on robot... This may take several seconds.')
     robot.power_on(timeout_sec=20)
     assert robot.is_powered_on(), 'Robot power on failed.'
-    robot.logger.info('Robot powered on.')
+    logger.info('Robot powered on.')
 
-    robot.logger.info('Commanding robot to stand...')
+    logger.info('Commanding robot to stand...')
     command_client = robot.ensure_client(RobotCommandClient.default_service_name)
     blocking_stand(command_client, timeout_sec=10)
-    robot.logger.info('Robot standing.')
+    logger.info('Robot standing.')
     time.sleep(3)
 
     logger.info("Calibration in progress..")
@@ -110,4 +110,4 @@ with bosdyn.client.lease.LeaseKeepAlive(lease_client, must_acquire=True, return_
 
     robot.power_off(cut_immediately=False, timeout_sec=20)
     assert not robot.is_powered_on(), 'Robot power off failed.'
-    robot.logger.info('Robot safely powered off.')
+    logger.info('Robot safely powered off.')
