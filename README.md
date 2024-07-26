@@ -31,3 +31,13 @@ Update pip:
 
 Install requirements:
 > python3 -m pip install -r requirements.txt
+
+
+
+Execution:
+
+The script can be run with the default hostname (192.168.50.3) with:
+> python3 synchro_testing.py
+
+If the robot IP has been changed, or you're not running from the Core, the hostname can be changed by running (using 192.168.80.3 as an example):
+> python3 synchro_testing.py --host 192.168.80.3

@@ -1,1 +1,2 @@
+protobuf==3.19.4
 bosdyn-client
