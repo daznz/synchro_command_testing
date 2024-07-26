@@ -27,19 +27,16 @@ logging.basicConfig(level=logging.DEBUG)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--host", default="192.168.50.3", help="The IP address of the robot")
-parser.add_argument("--username", default="user", help="The username of the robot")
-parser.add_argument("--password", default="password", help="The password of the robot")
 args = parser.parse_args()
 
-username = args.username
-password = args.password
 host = args.host
 
-logger.info(f"Beginning test on robot at {host}, with username {username} and password {password}")
+logger.info(f"Beginning test on robot at {host}")
 
 sdk = bosdyn.client.create_standard_sdk('synchro_command_test')
 robot = sdk.create_robot(host)
-robot.authenticate(username, password)
+
+bosdyn.client.util.authenticate(robot)
 
 robot.time_sync.wait_for_sync()
 
